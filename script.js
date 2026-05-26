@@ -2,19 +2,19 @@
    CUSTOM CURSOR ONLY FOR DESKTOP
 ======================================== */
 
-if (window.innerWidth > 768) {
-  const cursor = document.querySelector(".cursor");
-  const tail = document.querySelector(".cursor-tail");
+/* ========================================
+   CUSTOM CURSOR ONLY FOR DESKTOP
+======================================== */
 
+const cursor = document.querySelector(".cursor");
+const tail = document.querySelector(".cursor-tail");
+
+if (window.innerWidth > 768) {
   let mouseX = 0;
   let mouseY = 0;
 
   let tailX = 0;
   let tailY = 0;
-
-  // SHOW CURSOR
-  cursor.style.display = "block";
-  tail.style.display = "block";
 
   document.addEventListener("mousemove", (e) => {
     mouseX = e.clientX;
@@ -35,6 +35,9 @@ if (window.innerWidth > 768) {
   }
 
   animateTail();
+} else {
+  if (cursor) cursor.style.display = "none";
+  if (tail) tail.style.display = "none";
 }
 
 /* ========================================
