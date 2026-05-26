@@ -1,31 +1,41 @@
-const cursor = document.querySelector(".cursor");
-const tail = document.querySelector(".cursor-tail");
+/* ========================================
+   CUSTOM CURSOR ONLY FOR DESKTOP
+======================================== */
 
-let mouseX = 0;
-let mouseY = 0;
+if (window.innerWidth > 768) {
+  const cursor = document.querySelector(".cursor");
+  const tail = document.querySelector(".cursor-tail");
 
-let tailX = 0;
-let tailY = 0;
+  let mouseX = 0;
+  let mouseY = 0;
 
-document.addEventListener("mousemove", (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
+  let tailX = 0;
+  let tailY = 0;
 
-  cursor.style.left = mouseX + "px";
-  cursor.style.top = mouseY + "px";
-});
+  // SHOW CURSOR
+  cursor.style.display = "block";
+  tail.style.display = "block";
 
-function animateTail() {
-  tailX += (mouseX - tailX) * 0.15;
-  tailY += (mouseY - tailY) * 0.15;
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
 
-  tail.style.left = tailX + "px";
-  tail.style.top = tailY + "px";
+    cursor.style.left = mouseX + "px";
+    cursor.style.top = mouseY + "px";
+  });
 
-  requestAnimationFrame(animateTail);
+  function animateTail() {
+    tailX += (mouseX - tailX) * 0.15;
+    tailY += (mouseY - tailY) * 0.15;
+
+    tail.style.left = tailX + "px";
+    tail.style.top = tailY + "px";
+
+    requestAnimationFrame(animateTail);
+  }
+
+  animateTail();
 }
-
-animateTail();
 
 /* ========================================
    MOBILE NAVIGATION TOGGLE

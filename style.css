@@ -7,10 +7,6 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 /* ========================================
    BODY STYLING
 ======================================== */
@@ -28,43 +24,6 @@ body {
   width: 90%;
   max-width: 1300px;
   margin: auto;
-}
-
-/* Hide default cursor */
-body {
-  cursor: none;
-}
-
-/* Main yellow cursor */
-.cursor {
-  width: 28px;
-  height: 28px;
-  background: #ffd500;
-  border: 3px solid #000;
-  border-radius: 50%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 9999;
-  transition: transform 0.08s ease;
-  box-shadow: 0 0 12px rgba(255, 213, 0, 0.6);
-}
-
-/* Tail effect */
-.cursor-tail {
-  width: 14px;
-  height: 14px;
-  background: rgba(255, 213, 0, 0.45);
-  border-radius: 50%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 9998;
-  filter: blur(3px);
 }
 
 /* ========================================
@@ -452,6 +411,49 @@ body {
 }
 
 /* ========================================
+   CUSTOM CURSOR
+======================================== */
+
+.cursor,
+.cursor-tail {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+}
+
+/* Main Pointer */
+.cursor {
+  width: 18px;
+  height: 18px;
+  background: #ffd500;
+  border: 3px solid #000;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Tail */
+.cursor-tail {
+  width: 40px;
+  height: 4px;
+  background: #ffd500;
+  border-radius: 20px;
+  transform: translate(-50%, -50%);
+  opacity: 0.7;
+}
+
+/* HIDE ON MOBILE */
+@media (max-width: 768px) {
+  .cursor,
+  .cursor-tail {
+    display: none !important;
+  }
+
+  body {
+    cursor: auto;
+  }
+}
+
+/* ========================================
    HAMBURGER MENU
 ======================================== */
 
@@ -512,7 +514,6 @@ body {
     border-top: 3px solid #000;
 
     display: none;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 
     z-index: 999;
   }
@@ -1726,36 +1727,4 @@ body {
   .footer-brand h3 {
     font-size: 22px;
   }
-}
-
-#topBtn {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-
-  width: 52px;
-  height: 52px;
-
-  border: 3px solid #000;
-  border-radius: 50%;
-
-  background: #ffd500;
-  color: #000;
-
-  font-size: 24px;
-  font-weight: bold;
-
-  cursor: pointer;
-  z-index: 9999;
-
-  display: none;
-
-  box-shadow: 4px 4px 0 #000;
-
-  transition: all 0.25s ease;
-}
-
-#topBtn:hover {
-  transform: translateY(-4px) scale(1.08);
-  background: #ffe44d;
 }
